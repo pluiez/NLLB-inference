@@ -6,6 +6,8 @@ A convenient script for running [NLLB](https://github.com/facebookresearch/fairs
 
 Get the [NLLB checkpoint](https://github.com/facebookresearch/fairseq/tree/nllb/examples/nllb/modeling#open-sourced-models-and-metrics) and then find the code mapping for your languages from [Languages in FLORES-200](https://github.com/facebookresearch/flores/tree/main/flores200#languages-in-flores-200).
 
+*NOTE*: the following script only deals with dense model with params ranged from 600M to 3.3B, and inference with MoE requires extra arguments. The file size of the MoE model is 337G, actually most people don't have the resources to get such a large model running at least in a short term.
+
 ### Pre-Processing and Inference
 
 The following is an example translation from Chinese to English using Distilled-600M checkpoint:
