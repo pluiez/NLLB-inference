@@ -30,4 +30,4 @@ else
     exit 1
 fi
 
-perl ~/tools/mosesdecoder/scripts/tokenizer/normalize-punctuation.perl $lang
+perl $root/normalize-punctuation.perl $lang
