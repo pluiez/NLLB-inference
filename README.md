@@ -8,6 +8,11 @@ Get the [NLLB checkpoint](https://github.com/facebookresearch/fairseq/tree/nllb/
 
 *NOTE*: the following script only deals with dense model with params ranged from 600M to 3.3B, and inference with MoE requires extra arguments. The file size of the MoE model is 337G, actually most people don't have the resources to get such a large model running at least in a short term.
 
+### Prerequisites
+
+1. clone or update the [fairseq](https://github.com/facebookresearch/fairseq) repo, then switch to NLLB branch.
+2. install [sentencepiece](https://github.com/google/sentencepiece) for command line usage.
+
 ### Pre-Processing and Inference
 
 The following is an example translation from Chinese to English using Distilled-600M checkpoint:
