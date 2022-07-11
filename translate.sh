@@ -18,9 +18,18 @@ translate () {
     ckp=$1
     slang=$2
     tlang=$3
-    bash preprocess/normalize_punctuation.sh zho_Hans < /dev/stdin | \
-    spm_encode --model preprocess/flores200_sacrebleu_tokenizer_spm.model | \
-    fairseq-interactive . --input - -s $slang -t $tlang --path $ckp  --batch-size 1024 --max-tokens 8192 --buffer-size 100000 --beam 4 --lenpen 1.0 --fp16 --fixed-dictionary dictionary.txt --task translation_multi_simple_epoch  --decoder-langtok --encoder-langtok src --langs $(cat $root/langs.txt) --lang-pairs $slang-$tlang --add-data-source-prefix-tags 2>&1
+    bash $root/preprocess/normalize_punctuation.sh zho_Hans < /dev/stdin | \
+        spm_encode --model $root/preprocess/flores200_sacrebleu_tokenizer_spm.model | \
+        fairseq-interactive . --input - -s $slang -t $tlang \
+            --path $ckp --batch-size 1024 --max-tokens 8192 --buffer-size 100000 \
+            --beam 4 --lenpen 1.0 \
+            --fp16 \
+            --fixed-dictionary $root/dictionary.txt \
+            --task translation_multi_simple_epoch \
+            --decoder-langtok --encoder-langtok src \
+            --langs $(cat $root/langs.txt) \
+            --lang-pairs $slang-$tlang \
+            --add-data-source-prefix-tags 2>&1
 }
 
 translate $ckp $slang $tlang < /dev/stdin
