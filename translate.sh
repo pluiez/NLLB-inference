@@ -20,7 +20,7 @@ translate () {
     tlang=$3
     bash $root/preprocess/normalize_punctuation.sh zho_Hans < /dev/stdin | \
         spm_encode --model $root/preprocess/flores200_sacrebleu_tokenizer_spm.model | \
-        fairseq-interactive . --input - -s $slang -t $tlang \
+        fairseq-interactive $root --input - -s $slang -t $tlang \
             --path $ckp --batch-size 1024 --max-tokens 8192 --buffer-size 100000 \
             --beam 4 --lenpen 1.0 \
             --fp16 \
