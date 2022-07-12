@@ -18,7 +18,7 @@ translate () {
     ckp=$1
     slang=$2
     tlang=$3
-    bash $root/preprocess/normalize_punctuation.sh zho_Hans < /dev/stdin | \
+    bash $root/preprocess/normalize_punctuation.sh $slang < /dev/stdin | \
         spm_encode --model $root/preprocess/flores200_sacrebleu_tokenizer_spm.model | \
         fairseq-interactive $root --input - -s $slang -t $tlang \
             --path $ckp --batch-size 1024 --max-tokens 8192 --buffer-size 100000 \
