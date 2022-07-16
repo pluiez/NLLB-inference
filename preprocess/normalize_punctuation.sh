@@ -26,8 +26,8 @@ if [ -v "lang_map[$lang]" ]; then
 elif [ -v "lang_map[${lang:0:3}]" ]; then
     lang=${lang_map[${lang:0:3}]}
 else
-    echo "undefined mapping: ${lang}" >&2
-    exit 1
+    echo "undefined mapping: ${lang}, falling back to: en" >&2
+    lang=en
 fi
 
 perl $root/normalize-punctuation.perl $lang
